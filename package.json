@@ -14,7 +14,7 @@
     "webpack",
     "babel"
   ],
-  "author": "Nitin Punjabi",
+  "author": "Aroup Goldar Dhruba",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^2.13.1",
