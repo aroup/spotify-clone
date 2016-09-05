@@ -8,11 +8,25 @@ const PATHS = {
 };
 
 module.exports = {
-  devtool:'eval',
+  devtool: 'source-map',
   entry: {
     javascript: PATHS.app,
     html: PATHS.html
   },
+  plugins: [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ],
   output: {
     path: PATHS.dist,
     publicPath: '/',
@@ -40,7 +54,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loaders: ["react-hot", "babel-loader"]
+        loaders: ["react-hot", "babel-loader"],
+        query :{
+          presets :['es2015','react']
+        }
       }
     ]
   },
