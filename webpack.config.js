@@ -8,7 +8,6 @@ const PATHS = {
 };
 
 module.exports = {
-  devtool:'eval',
   entry: {
     javascript: PATHS.app,
     html: PATHS.html
@@ -19,7 +18,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: PATHS.dist
+    contentBase: PATHS.dist,
+    hot : true
   },
   eslint: {
     emitWarning: true
